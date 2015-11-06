@@ -1,4 +1,4 @@
-# AuditLib
+# Message broker abstraction module
 
 
 This module provides abstraction layer to message broker.
@@ -12,8 +12,9 @@ it will work with any message broker and log management system.
 
 
 Example:
+    
+    
     import audit
-
 
     message = '{"short_message":"Test", "host":"example.org"}'
     Audit = audit.Audit()
