@@ -69,8 +69,14 @@ class Audit:
             message (json/gelp): Message can depend on third-party log software
                 Graylog uses gelp format: https://www.graylog.org/resources/gelf/
         """
-        self.connection.connect()
+        if (type(message) is not str) or (message == ''):
+            print 'Unable to log empty message'
+            return False
+        if len(message) > 8192:
+            print 'Message size too large'
+            return False
 
+        self.connection.connect()
         channel = self.connection.channel()
         exchange = Exchange(self.exchange_setup.exchange,
                             type=self.exchange_setup.exchange_type)
